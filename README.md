@@ -22,6 +22,15 @@
 
 </div>
 
+
+<p align="center">
+  <img src="docs/images/threatlens-dashboard.png" alt="ThreatLens cybersecurity analysis dashboard" width="100%" />
+</p>
+
+<p align="center">
+  <em>A dark, analyst-focused workspace for evidence-grounded threat intelligence and detection validation.</em>
+</p>
+
 > [!IMPORTANT]
 > ThreatLens is a transparent deterministic baseline, not an LLM or autonomous AI agent. It does not access production systems, external intelligence feeds, credentials, or real security logs.
 
