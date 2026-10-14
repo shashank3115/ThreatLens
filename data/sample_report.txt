@@ -1,0 +1,5 @@
+SYNTHETIC THREAT INTELLIGENCE REPORT — for local demonstration only.
+
+In the fictional "Copper Finch" intrusion, the operator launched rundll32.exe to execute a malicious DLL on workstation WS-07.
+The same scenario used powershell -enc to run an encoded discovery command.
+Analysts should investigate these observations in context; the report does not establish that every use of either utility is malicious.

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080909">
+  <title>ThreatLens | Local investigation workspace</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="wordmark" href="#overview" aria-label="ThreatLens overview">THREAT<span>LENS</span></a>
+      <p class="descriptor">THREAT INTELLIGENCE <i></i> DETECTION VALIDATION</p>
+      <div class="engine-state"><span class="local-dot" aria-hidden="true"></span> LOCAL ANALYSIS <span>DETERMINISTIC ENGINE</span></div>
+    </header>
+    <aside class="rail" aria-label="Workspace navigation">
+      <nav>
+        <a href="#overview" class="nav-link active"><span>01</span> Overview</a>
+        <a href="#source" class="nav-link"><span>02</span> Analyse report</a>
+        <a href="#rules" class="nav-link"><span>03</span> Detection rules</a>
+        <a href="#events" class="nav-link"><span>04</span> Event evidence</a>
+        <a href="#methodology" class="nav-link"><span>05</span> Methodology</a>
+      </nav>
+      <div class="rail-note">v0.1<br><span>Local prototype</span></div>
+    </aside>
+    <main id="overview" class="workspace">
+      <section class="workspace-heading">
+        <div>
+          <p class="kicker">INVESTIGATION / LOCAL WORKSPACE</p>
+          <h1>Investigation workspace</h1>
+          <p class="lede">Translate a threat report into traceable candidate detections, then inspect their behaviour against the included synthetic event set.</p>
+        </div>
+        <p class="scope-note">No external feeds or AI model<br>are used in this baseline.</p>
+      </section>
+      <ol class="workflow" aria-label="Analysis workflow">
+        <li id="stage-source" class="current"><span>01</span><b>Source report</b><small>Ready for input</small></li>
+        <li id="stage-evidence"><span>02</span><b>Evidence extraction</b><small>Awaiting analysis</small></li>
+        <li id="stage-rules"><span>03</span><b>Candidate rules</b><small>Awaiting analysis</small></li>
+        <li id="stage-events"><span>04</span><b>Log validation</b><small>Awaiting analysis</small></li>
+      </ol>
+      <section id="source" class="source-panel" aria-labelledby="source-title">
+        <div class="section-head"><div><p class="section-index">01 — SOURCE REPORT</p><h2 id="source-title">Report under review</h2></div><button id="sample" class="button button-quiet" type="button">Load synthetic sample</button></div>
+        <label class="visually-hidden" for="report">Threat intelligence report</label>
+        <textarea id="report" rows="11" maxlength="20000" placeholder="Paste a threat intelligence report. The deterministic baseline looks for explicitly documented patterns, then keeps the supporting passages visible for review."></textarea>
+        <div class="source-footer"><p id="report-count" class="mono">0 / 20,000 characters</p><div><p id="error" class="error-message" role="alert"></p><button id="analyse" class="button button-primary" type="button">Analyse report <span aria-hidden="true">↵</span></button></div></div>
+      </section>
+      <section id="empty-state" class="empty-state" aria-live="polite"><span class="empty-mark">//</span><div><h2>Awaiting source material</h2><p>Load the labelled synthetic report or submit your own text to begin an evidence-grounded analysis.</p></div></section>
+      <section id="results" hidden aria-live="polite">
+        <section class="analysis-summary" aria-labelledby="summary-title"><div><p class="section-index">ANALYSIS SUMMARY</p><h2 id="summary-title">Review results</h2></div><div id="summary-stats" class="summary-stats"></div></section>
+        <section id="evidence" class="evidence-section" aria-labelledby="evidence-title">
+          <div class="section-head"><div><p class="section-index">02 — EVIDENCE EXTRACTION</p><h2 id="evidence-title">Supporting passages</h2></div><p class="section-caption">Literal, case-insensitive matches from the submitted report.</p></div>
+          <div id="evidence-list" class="evidence-list"></div>
+        </section>
+        <section id="rules" class="rules-section" aria-labelledby="rules-title">
+          <div class="section-head"><div><p class="section-index">03 — CANDIDATE RULES</p><h2 id="rules-title">Detection rule inspector</h2></div><p class="section-caption">Structural validity and evidence support are separate findings.</p></div>
+          <div id="rule-list" class="rule-list"></div>
+        </section>
+        <section id="events" class="events-section" aria-labelledby="events-title">
+          <div class="section-head"><div><p class="section-index">04 — LOG VALIDATION</p><h2 id="events-title">Synthetic event evidence</h2></div><p class="section-caption">Only events matched by a candidate rule are shown.</p></div>
+          <div class="table-wrap"><table><thead><tr><th>Event ID</th><th>Timestamp</th><th>Type</th><th>Relevant fields</th><th>Match classification</th></tr></thead><tbody id="event-rows"></tbody></table></div>
+          <p id="event-empty" class="table-empty" hidden>No synthetic events matched the generated candidates.</p>
+        </section>
+      </section>
+      <section id="methodology" class="methodology" aria-labelledby="method-title"><div><p class="section-index">05 — METHODOLOGY</p><h2 id="method-title">Interpretation boundaries</h2></div><p>YAML parsing and schema validity do not establish real-world detection quality. Evidence support only confirms that a submitted passage triggered a defined baseline pattern. Sample matches are observations from a small, labelled synthetic dataset—not production incidents or measured performance. Full limitations are included in the local project documentation.</p></section>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
